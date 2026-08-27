@@ -35,6 +35,7 @@ Visualize the motion of a pendulum by adjusting its length, initial angle, and o
 | Matplotlib | Graph rendering & image generation |
 
 # 📁 Project Structure
+```text
 pendulum-simulator/
 ├── app.py
 ├── simulator.py
@@ -42,7 +43,7 @@ pendulum-simulator/
 ├── templates/
 │ └── index.html
 └── static/
-
+```
 # ✨ Features
 - Adjust pendulum length
 - Adjust initial angle
