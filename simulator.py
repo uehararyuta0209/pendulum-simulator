@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.integrate import solve_ivp# Convert angle from degrees to radians
-def simulator(length, angle_deg, duration):
+def simulator(length, angle_deg, duration,b = 0.5):
     angle_rad = np.radians(angle_deg)
     
     # Initial conditions
@@ -17,7 +17,7 @@ def simulator(length, angle_deg, duration):
     def equations(t, state):
         theta, omega = state
         dtheta_dt = omega
-        domega_dt = -(g/l) * np.sin(theta)
+        domega_dt = -(g/l) * np.sin(theta)- b * omega  # Damping term can be added if needed
         return [dtheta_dt, domega_dt]
 
     # Initial state vector
@@ -32,5 +32,6 @@ if __name__ == "__main__":
     t, theta, omega = simulator(length=1.0, angle_deg=30.0, duration=10.0)
     print(f"計算した時刻の数: {len(t)}")
     print(f"最初の角度: {theta[0]:.4f} rad")
+    print(f"最後の角度: {theta[-1]:.4f} rad")
     print(f"最大角度:   {max(theta):.4f} rad")
     print(f"最小角度:   {min(theta):.4f} rad")

@@ -15,8 +15,9 @@ def index():
 def graph():
     length = float(request.args.get('length', 1.0))
     angle  = float(request.args.get('angle', 30.0))
+    b = float(request.args.get('b', 0.5))  # Get damping coefficient from query parameters
 # ここにグラフを生成して返す処理
-    t, theta, omega = simulator(length=length, angle_deg=angle, duration=10.0)
+    t, theta, omega = simulator(length=length, angle_deg=angle, duration=10.0, b=b)  # Pass damping coefficient to simulator
     plt.figure(figsize=(10, 6))
     plt.plot(t, theta)
     plt.xlabel('Time (s)')
