@@ -5,6 +5,7 @@
 # 🔵 pendulum-simulator
 A physics simulator for pendulum motion.
 Visualize the motion of a pendulum by adjusting its length, initial angle, and observation time.
+Supports both normal pendulum and double pendulum simulation, demonstrating chaotic motion.
 
 # 🚀 Getting Started
 1. Clone the repository
