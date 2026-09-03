@@ -1,6 +1,119 @@
+/* 全体 */
 body {
-    font-family: Arial, sans-serif;  /* フォント */
-    background: #f5f5f5;   /* 背景色 */
-    text-align: center;   /* 文字の位置 */
-    padding: 20px;      /* 余白 */
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* 横並びレイアウト */
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* サイドバー */
+.sidebar {
+    width: 180px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    font-size: 1rem;
+    color: steelblue;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* タブボタン */
+.tab {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #eee;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+}
+
+.tab:hover {
+    background: #b0c4de;
+    color: white;
+}
+
+.tab.active {
+    background: steelblue;
+    color: white;
+}
+
+/* メインエリア */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* グラフ */
+#graph {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* フォームボックス */
+.form-box {
+    width: 100%;
+    max-width: 700px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ラベル */
+label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* 入力欄 */
+input[type="number"] {
+    width: 120px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+/* シミュレートボタン */
+button[type="submit"] {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    background: steelblue;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #2a5f8f;
 }

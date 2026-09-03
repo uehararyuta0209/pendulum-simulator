@@ -6,31 +6,95 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>振り子シミュレーター</h1>
-  <img id="graph" src="/graph" alt="振り子グラフ">
-  <form id="simForm" action="/graph" method="get">
-  <label>振り子の長さ (m):
-    <input type="number" name="length" value="1.0" step="0.1">
-  </label>
-  <label>初期角度 (°):
-    <input type="number" name="angle" value="30.0" step="0.1">
-  </label>
-  <label>減衰係数 (b):
-    <input type="number" name="b" value="0.5" step="0.1">
-  </label>
-  <button type="submit">シミュレート</button>
-</form>
+  <div class="container">
+
+    <!-- サイドバー -->
+    <div class="sidebar">
+      <h2>振り子シミュレーター</h2>
+      <button class="tab active" id="tab1">普通の振り子</button>
+      <button class="tab" id="tab2">二重振り子</button>
+    </div>
+
+    <!-- メインエリア -->
+    <div class="main">
+
+      <!-- グラフ -->
+      <img id="graph" src="/graph" alt="振り子グラフ">
+
+      <!-- 普通の振り子フォーム -->
+      <div id="panel1" class="form-box">
+        <form id="simForm">
+          <label>振り子の長さ (m):
+            <input type="number" name="length" value="1.0" step="0.1">
+          </label>
+          <label>初期角度 (°):
+            <input type="number" name="angle" value="30.0" step="0.1">
+          </label>
+          <label>減衰係数 (b):
+            <input type="number" name="b" value="0.5" step="0.1">
+          </label>
+          <button type="submit">シミュレート</button>
+        </form>
+      </div>
+
+      <!-- 二重振り子フォーム -->
+      <div id="panel2" class="form-box" style="display:none">
+        <form id="simForm2">
+          <label>長さ1 (m):
+            <input type="number" name="l1" value="1.0" step="0.1">
+          </label>
+          <label>長さ2 (m):
+            <input type="number" name="l2" value="1.0" step="0.1">
+          </label>
+          <label>初期角度1 (°):
+            <input type="number" name="angle1" value="90.0" step="0.1">
+          </label>
+          <label>初期角度2 (°):
+            <input type="number" name="angle2" value="45.0" step="0.1">
+          </label>
+          <button type="submit">シミュレート</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
 <script>
+// 普通の振り子
 document.getElementById('simForm').addEventListener('submit', function(e) {
-    e.preventDefault()  // ページ遷移を止める
-    
+    e.preventDefault()
     const length = document.querySelector('[name="length"]').value
     const angle  = document.querySelector('[name="angle"]').value
     const b      = document.querySelector('[name="b"]').value
-    
-    // img の src を書き換える
-    document.getElementById('graph').src = 
+    document.getElementById('graph').src =
         `/graph?length=${length}&angle=${angle}&b=${b}`
+})
+
+// 二重振り子
+document.getElementById('simForm2').addEventListener('submit', function(e) {
+    e.preventDefault()
+    const l1     = document.querySelector('[name="l1"]').value
+    const l2     = document.querySelector('[name="l2"]').value
+    const angle1 = document.querySelector('[name="angle1"]').value
+    const angle2 = document.querySelector('[name="angle2"]').value
+    document.getElementById('graph').src =
+        `/graph2?l1=${l1}&l2=${l2}&angle1=${angle1}&angle2=${angle2}`
+})
+
+// タブ切り替え
+document.getElementById('tab1').addEventListener('click', function() {
+    document.getElementById('panel1').style.display = 'block'
+    document.getElementById('panel2').style.display = 'none'
+    document.getElementById('graph').src = '/graph'
+    document.getElementById('tab1').classList.add('active')
+    document.getElementById('tab2').classList.remove('active')
+})
+document.getElementById('tab2').addEventListener('click', function() {
+    document.getElementById('panel1').style.display = 'none'
+    document.getElementById('panel2').style.display = 'block'
+    document.getElementById('graph').src = '/graph2'
+    document.getElementById('tab1').classList.remove('active')
+    document.getElementById('tab2').classList.add('active')
 })
 </script>
 </body>

@@ -4,7 +4,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
 from simulator import simulator
-
+from double_pendulum import double_pendulum  # ← 追加
 app = Flask(__name__)
 
 @app.route('/')
@@ -27,6 +27,34 @@ def graph():
     img = io.BytesIO()
     plt.savefig(img, format='png')
     img.seek(0)
+    return send_file(img, mimetype='image/png')
+
+@app.route('/graph2')
+def graph2():
+    l1     = float(request.args.get('l1', 1.0))
+    l2     = float(request.args.get('l2', 1.0))
+    angle1 = float(request.args.get('angle1', 90.0))
+    angle2 = float(request.args.get('angle2', 45.0))
+
+    t, theta1, theta2 = double_pendulum(
+        l1=l1, l2=l2,
+        angle1_deg=angle1, angle2_deg=angle2,
+        duration=10.0
+    )
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(t, theta1, label='pendulum1')
+    ax.plot(t, theta2, label='pendulum2')
+    ax.set_xlabel('Time (s)')
+    ax.set_ylabel('Angle (rad)')
+    ax.set_title('Double Pendulum Motion')
+    ax.legend()
+    ax.grid(True)
+
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plt.close()
     return send_file(img, mimetype='image/png')
 
 if __name__ == '__main__':
