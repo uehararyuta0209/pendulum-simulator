@@ -13,6 +13,7 @@
       <h2>振り子シミュレーター</h2>
       <button class="tab active" id="tab1">普通の振り子</button>
       <button class="tab" id="tab2">二重振り子</button>
+      <button class="tab" id="tab3">RL制御</button>
     </div>
 
     <!-- メインエリア -->
@@ -56,6 +57,12 @@
         </form>
       </div>
 
+      <!-- RL制御パネル -->
+      <div id="panel3" class="form-box" style="display:none">
+        <p>学習済みAIモデルによる倒立振り子制御</p>
+        <button id="rlBtn">制御開始</button>
+      </div>
+
     </div>
   </div>
 
@@ -81,20 +88,38 @@ document.getElementById('simForm2').addEventListener('submit', function(e) {
         `/graph2?l1=${l1}&l2=${l2}&angle1=${angle1}&angle2=${angle2}`
 })
 
+// RL制御
+document.getElementById('rlBtn').addEventListener('click', function() {
+    document.getElementById('graph').src = '/graph_rl'
+})
+
 // タブ切り替え
 document.getElementById('tab1').addEventListener('click', function() {
     document.getElementById('panel1').style.display = 'block'
     document.getElementById('panel2').style.display = 'none'
+    document.getElementById('panel3').style.display = 'none'
     document.getElementById('graph').src = '/graph'
     document.getElementById('tab1').classList.add('active')
     document.getElementById('tab2').classList.remove('active')
+    document.getElementById('tab3').classList.remove('active')
 })
 document.getElementById('tab2').addEventListener('click', function() {
     document.getElementById('panel1').style.display = 'none'
     document.getElementById('panel2').style.display = 'block'
+    document.getElementById('panel3').style.display = 'none'
     document.getElementById('graph').src = '/graph2'
     document.getElementById('tab1').classList.remove('active')
     document.getElementById('tab2').classList.add('active')
+    document.getElementById('tab3').classList.remove('active')
+})
+document.getElementById('tab3').addEventListener('click', function() {
+    document.getElementById('panel1').style.display = 'none'
+    document.getElementById('panel2').style.display = 'none'
+    document.getElementById('panel3').style.display = 'block'
+    document.getElementById('graph').src = '/graph_rl'
+    document.getElementById('tab1').classList.remove('active')
+    document.getElementById('tab2').classList.remove('active')
+    document.getElementById('tab3').classList.add('active')
 })
 </script>
 </body>
