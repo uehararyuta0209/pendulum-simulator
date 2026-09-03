@@ -7,6 +7,8 @@ A physics simulator for pendulum motion.
 Visualize the motion of a pendulum by adjusting its length, initial angle, and observation time.
 Supports both normal pendulum and double pendulum simulation, demonstrating chaotic motion.
 
+<img width="1917" height="937" alt="image" src="https://github.com/user-attachments/assets/ecf32cc1-ce77-4c53-808a-46013c7c5fb4" />
+
 # 🚀 Getting Started
 1. Clone the repository
 ```bash
