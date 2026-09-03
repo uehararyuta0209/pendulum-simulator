@@ -9,17 +9,17 @@ Visualize the motion of a pendulum by adjusting its length, initial angle, and o
 # 🚀 Getting Started
 1. Clone the repository
 ```bash
-    git clone https://github.com/uehararyuta0209/pendulum-simulator.git
+git clone https://github.com/uehararyuta0209/pendulum-simulator.git
 ```
 
 2. Install dependencies
 ```bash
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 3. Start the server
 ```bash
-    flask run
+flask run
 ```
 
 4. Open your browser
@@ -39,15 +39,21 @@ Visualize the motion of a pendulum by adjusting its length, initial angle, and o
 pendulum-simulator/
 ├── app.py
 ├── simulator.py
+├── double_pendulum.py
 ├── requirements.txt
 ├── templates/
-│ └── index.html
+│   └── index.html
 └── static/
+    └── style.css
 ```
+
 # ✨ Features
 - Adjust pendulum length
 - Adjust initial angle
+- Adjust damping coefficient
 - Visualize motion graph in browser
+- Switch between normal and double pendulum simulation
+- Real-time graph update without page reload
 
 # 📝 License
 MIT License
