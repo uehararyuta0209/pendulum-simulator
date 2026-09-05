@@ -29,13 +29,15 @@ flask run
     Navigate to `http://127.0.0.1:5000`
 
 # 🛠 Tech Stack
-| Library    | Purpose |
-|------------|---------|
-| Python     | Main programming language |
-| Flask      | Web server & browser display |
-| NumPy      | Numerical computation |
-| SciPy      | Solving pendulum equations of motion |
-| Matplotlib | Graph rendering & image generation |
+| Library           | Purpose                             |
+|-------------------|-------------------------------------|
+| Python            | Main programming language           |
+| Flask             | Web server & browser display        |
+| NumPy             | Numerical computation               |
+| SciPy             | Solving pendulum equations of motion|
+| Matplotlib        | Graph rendering & image generation  |
+| gymnasium         | RL environment for pendulum control |
+| stable-baselines3 | PPO reinforcement learning agent    |
 
 # 📁 Project Structure
 ```text
@@ -44,6 +46,8 @@ pendulum-simulator/
 ├── simulator.py
 ├── double_pendulum.py
 ├── requirements.txt
+├── rl_pendulum.py
+├── pendulum_model.zip
 ├── templates/
 │   └── index.html
 └── static/
@@ -57,6 +61,7 @@ pendulum-simulator/
 - Visualize motion graph in browser
 - Switch between normal and double pendulum simulation
 - Real-time graph update without page reload
+- Reinforcement Learning (PPO) based inverted pendulum control
 
 # 📝 License
 MIT License
